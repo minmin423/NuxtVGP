@@ -1,6 +1,5 @@
 export default defineNuxtConfig({
 	srcDir: 'client/',
-	// build: { transpile: ['vuetify'] },
 	imports: { dirs: ['./stores'] },
 	apollo: {
 		autoImports: true,
@@ -14,4 +13,5 @@ export default defineNuxtConfig({
         ['@pinia/nuxt', { autoImports: ['defineStore', 'acceptHMRUpdate'] }],
         "@nuxtjs/tailwindcss"
     ],
+	ssr: false
 })
