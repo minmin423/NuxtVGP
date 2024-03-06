@@ -99,22 +99,18 @@ const paginatedLaunches = computed(() => {
 });
 
 const sortedFilteredLaunches = computed(() => {
-    // Apply year filter
     let filteredLaunches = yearFilter.value ? launches.value.filter(launch => {
         const launchYear = new Date(launch.launch_date_local).getFullYear();
         return launchYear === parseInt(yearFilter.value!);
     }) : [...launches.value];
 
-    // Apply sorting
     if (yearSort.value === 'asc') {
-        // Ascending sort
         filteredLaunches.sort((a, b) => {
             const yearA = new Date(a.launch_date_local).getFullYear();
             const yearB = new Date(b.launch_date_local).getFullYear();
             return yearA - yearB;
         });
     } else {
-        // Descending sort
         filteredLaunches.sort((a, b) => {
             const yearA = new Date(a.launch_date_local).getFullYear();
             const yearB = new Date(b.launch_date_local).getFullYear();
