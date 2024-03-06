@@ -121,33 +121,6 @@ const sortedFilteredLaunches = computed(() => {
     return filteredLaunches;
 });
 
-// const filteredLaunches = computed(() => {
-//     if (!yearFilter.value) {
-//         return launches.value;
-//     }
-
-//     const selectedYear = parseInt(yearFilter.value);
-
-//     let filterLaunches = launches.value.filter(launch => {
-//         const launchYear = new Date(launch.launch_date_local).getFullYear();
-//         return launchYear === selectedYear;
-//     });
-
-//     if (yearSort.value === 'asc') {
-//         return filterLaunches.sort((a, b) => {
-//             const yearA = new Date(a.launch_date_local).getFullYear();
-//             const yearB = new Date(b.launch_date_local).getFullYear();
-//             return yearA - yearB;
-//         });
-//     } else {
-//         return filterLaunches.sort((a, b) => {
-//             const yearA = new Date(a.launch_date_local).getFullYear();
-//             const yearB = new Date(b.launch_date_local).getFullYear();
-//             return yearB - yearA;
-//         });
-//     }
-// });
-
 const prevPage = () => {
     if (currentPage.value > 1) {
         currentPage.value--;
