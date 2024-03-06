@@ -1,9 +1,7 @@
 <template>
-	<v-app>
-		<v-main>
-			<slot />
-		</v-main>
-	</v-app>
+	<div>
+		<slot />
+	</div>
 </template>
 <script>
 export default {
