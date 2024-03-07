@@ -4,8 +4,8 @@
 
 		<div class="flex gap-4">
 			<NuxtLink to="/">Home</NuxtLink>
-			<!-- <NuxtLink to="/launches">Launches</NuxtLink> -->
 			<NuxtLink to="/rockets">Rockets</NuxtLink>
+			<NuxtLink to="/favorites">Favorites</NuxtLink>
 		</div>
 	</nav>
 </template>

@@ -29,7 +29,6 @@
 
 <script setup lang="ts">
 const rocketId = useRocketId();
-// const { rocketId } = defineProps(['rocketId']);
 
 const query = gql`
 	query getRocket($rocketId: ID!) {

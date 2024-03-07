@@ -22,17 +22,19 @@
                     <TableHead>Site</TableHead>
                     <TableHead>Rocket Name</TableHead>
                     <TableHead>Details</TableHead>
+                    <TableHead></TableHead>
                 </tr>
             </thead>
             <tbody>
                 <tr @click="toggleDetailsVisibility(launch.id)" class="h-20 cursor-pointer hover:bg-blue-50 border-b text-center transition-color duration-150 ease-in-out" 
                 :class="{ '!h-40' : showDetails === launch.id }"
                 v-for="launch in paginatedLaunches" :key="launch.id">
-                    <TableCell  class="w-1/6">{{ launch.mission_name }}</TableCell>
-                    <TableCell  class="w-1/6">{{ formatDate(launch.launch_date_local) }}</TableCell>
-                    <TableCell  class="w-1/6">{{ launch.launch_site ? launch.launch_site.site_name : 'None specified' }}</TableCell>
-                    <TableCell class="w-1/6">{{ launch.rocket.rocket_name }}</TableCell>
-                    <TableCell class="w-2/6">{{ showDetails === launch.id ? (launch.details ? launch.details : 'No details available.') : truncateDetails(launch.details) }}</TableCell>
+                    <TableCell  class="w-2/12">{{ launch.mission_name }}</TableCell>
+                    <TableCell  class="w-2/12">{{ formatDate(launch.launch_date_local) }}</TableCell>
+                    <TableCell  class="w-2/12">{{ launch.launch_site ? launch.launch_site.site_name : 'None specified' }}</TableCell>
+                    <TableCell class="w-2/12">{{ launch.rocket.rocket_name }}</TableCell>
+                    <TableCell class="w-3/12">{{ showDetails === launch.id ? (launch.details ? launch.details : 'No details available.') : truncateDetails(launch.details) }}</TableCell>
+                    <TableCell @click="store.addFavorite(launch.rocket.rocket.id)" class="w-1/12"><Icon icon="akar-icons:sort" class="h-8 w-8" /></TableCell>
                 </tr>
             </tbody>
         </table>
@@ -43,13 +45,15 @@
             <button @click="nextPage" :disabled="currentPage === totalPages" class="px-5 py-1 border rounded hover:bg-gray-200 disabled:bg-gray-300">Next</button>
         </div>
 
-        <div v-else class="w-full border flex items-center justify-center py-20 text-xl font-semibold">No Launches found.</div>
+        <div v-else class="w-full border flex items-center justify-center py-20 text-xl font-semibold">No Launches found. ☄</div>
     </div>
 </template>
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import { useYearSort } from '~/composables/useYearSort';
+
+const store = useFavorites();
 
 const query = gql`
 	query getLaunches {
@@ -62,6 +66,9 @@ const query = gql`
 			launch_date_local
 			rocket {
 				rocket_name
+                rocket {
+                    id
+                }
 			}
 			details
 		}
@@ -77,6 +84,9 @@ const { data } = useAsyncQuery<{
 			site_name: string
 		}
 		rocket: {
+            rocket: {
+                id: string
+            }
 			rocket_name: string
 		}
 		details: string
