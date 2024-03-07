@@ -2,7 +2,7 @@
 	<div class="px-2 md:px-10 h-full min-h-screen">
 		<h1 class="text-3xl font-semibold">Rockets</h1>
 
-		<div v-if="rockets" class="flex font-semibold">
+		<div v-if="rockets" class="flex font-semibold pt-5">
 			<div v-for="rocket in rockets" :key="rocket.id"
             @click="rocketId = rocket.id"
             class=" w-1/4 border px-2 py-1 lg:text-lg cursor-pointer hover:bg-slate-200 transition-colors ease-in-out duration-300"
@@ -11,7 +11,7 @@
 			</div>
 		</div>
 
-		<div class="text-xl text-center border rounded py-10 font-semibold">No Rockets found. 🐱‍🚀</div>
+		<div v-else class="text-xl text-center border rounded py-10 font-semibold">No Rockets found. 🐱‍🚀</div>
 
         <RocketDetails v-if="rocketId !== ''" />
 	</div>

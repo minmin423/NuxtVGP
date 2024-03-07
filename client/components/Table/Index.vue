@@ -26,15 +26,22 @@
                 </tr>
             </thead>
             <tbody>
-                <tr @click="toggleDetailsVisibility(launch.id)" class="h-20 cursor-pointer hover:bg-blue-50 border-b text-center transition-color duration-150 ease-in-out" 
+                <tr class="h-20 cursor-pointer hover:bg-blue-50 border-b text-center transition-color duration-150 ease-in-out" 
                 :class="{ '!h-40' : showDetails === launch.id }"
                 v-for="launch in paginatedLaunches" :key="launch.id">
                     <TableCell  class="w-2/12">{{ launch.mission_name }}</TableCell>
                     <TableCell  class="w-2/12">{{ formatDate(launch.launch_date_local) }}</TableCell>
                     <TableCell  class="w-2/12">{{ launch.launch_site ? launch.launch_site.site_name : 'None specified' }}</TableCell>
                     <TableCell class="w-2/12">{{ launch.rocket.rocket_name }}</TableCell>
-                    <TableCell class="w-3/12">{{ showDetails === launch.id ? (launch.details ? launch.details : 'No details available.') : truncateDetails(launch.details) }}</TableCell>
-                    <TableCell @click="store.addFavorite(launch.rocket.rocket.id)" class="w-1/12"><Icon icon="akar-icons:sort" class="h-8 w-8" /></TableCell>
+                    <TableCell @click="toggleDetailsVisibility(launch.id)" class="w-3/12">{{ showDetails === launch.id ? (launch.details ? launch.details : 'No details available.') : truncateDetails(launch.details) }}</TableCell>
+                    <TableCell v-if="store.favorites.includes(launch.rocket.rocket.id)" 
+                    @click="store.removeFavorite(launch.rocket.rocket.id)" class="w-1/12">
+                        <Icon icon="ph:star-fill" class="h-8 w-8 text-yellow-300" />
+                    </TableCell>
+                    <TableCell v-else 
+                    @click="store.addFavorite(launch.rocket.rocket.id)" class="w-1/12">
+                        <Icon icon="ph:star-bold" class="h-8 w-8" />
+                    </TableCell>
                 </tr>
             </tbody>
         </table>
