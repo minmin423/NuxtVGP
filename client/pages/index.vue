@@ -1,5 +1,5 @@
 <template>
-	<div class="px-10 min-h-screen">
+	<div class="px-2 lg:px-10 min-h-screen">
 		<h1 class="text-3xl font-semibold">Launches List</h1>
 		<div>
 			<p>Technologies used: Nuxt, Tailwind CSS, Apollo, and GraphQL.</p>

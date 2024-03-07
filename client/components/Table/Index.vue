@@ -1,16 +1,16 @@
 <template>
     <div>
-        <div class="w-full flex justify-end items-center gap-4 pb-2">
-            <div class="flex items-center gap-2">
+        <div class="w-full flex flex-col lg:flex-row justify-end items-center gap-4 pb-2">
+            <div class="flex items-center gap-2 w-full lg:w-fit">
                 <Icon icon="akar-icons:sort" class="h-8 w-8 text-gray-400" />
-                <select v-model="yearSort" class="border rounded h-10 px-2 w-48" name="sort">
+                <select v-model="yearSort" class="border rounded h-10 px-2 w-full lg:w-48" name="sort">
                     <option value="asc">Ascending</option>
                     <option value="desc">Descending</option>
                 </select>
             </div>
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2 w-full lg:w-fit">
                 <Icon icon="solar:filter-bold" class="h-8 w-8 text-gray-400" />
-                <input class="border rounded h-10 px-2" type="select" v-model="yearFilter" placeholder="Filter by year">
+                <input class="border rounded h-10 px-2 w-full lg:w-48" type="select" v-model="yearFilter" placeholder="Filter by year">
             </div>
         </div>
         

@@ -2,7 +2,7 @@
 	<div class="w-full px-2 lg:px-10 min-h-screen">
 		<h1 class="text-3xl font-semibold">Favorite Rockets</h1>
 
-        <div v-if="store.favorites.length !== 0" class="flex gap-4 pt-5">
+        <div v-if="store.favorites.length !== 0" class="flex flex-col lg:flex-row gap-4 pt-5">
             <div class="w-full flex flex-col items-center justify-center py-10 border rounded cursor-pointer hover:bg-gray-100 transition-all duration-300 ease-in-out hover:scale-110 px-4 text-center" 
             v-for="rocket in filteredRockets"
             @click="handleRocketClick(rocket.id)">
