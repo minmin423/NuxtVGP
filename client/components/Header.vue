@@ -1,5 +1,5 @@
 <template>
-	<nav class="flex align-center justify-between px-10 py-5 font-semibold">
+	<nav class="flex align-center justify-between px-2 lg:px-10 py-5 font-semibold">
 		<h1 class="text-3xl font-bold">SpaceX</h1>
 
 		<div class="flex gap-4">
